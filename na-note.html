@@ -9,6 +9,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <link rel="import" href="../paper-styles/shadow.html">
 <link rel="import" href="../paper-styles/typography.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../iron-autogrow-textarea/iron-autogrow-textarea.html">
+
 <dom-module id="na-note">
   <template>
     <style>
@@ -21,6 +24,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--paper-font-common-base);
         @apply(--shadow-elevation-2dp);
         border-radius: 2px;
+
+        --iron-autogrow-textarea: {
+          margin: 0;
+          padding: 0;
+          font-family: 'Roboto Slab', Times New Roman, serif;
+          white-space: pre-wrap;
+        }
+      }
+
+      iron-autogrow-textarea {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        border: 0;
+        margin: 1em 0 0;
+        padding: 0;
+        font-size: 0.9em;
+        font-family: 'Roboto Slab', Times New Roman, serif;
       }
 
       .hidden {
@@ -59,15 +80,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         line-height: 0;
         pointer-events: none;
       }
+
+      input {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        outline: none;
+        border: 0;
+        background: transparent;
+        white-space: pre-wrap;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        font-size: 1.15em;
+        font-weight: bold;
+        color: #212121;
+      }
     </style>
-    <h1
-        id="title"
-        class$="[[emptyClass(title, editable)]]"
-        contenteditable$="[[editable]]"></h1>
-    <p
-        id="body"
-        class$="[[emptyClass(body, editable)]]"
-        contenteditable$="[[editable]]"></p>
+    <template is="dom-if" if="[[editable]]">
+      <input is="iron-input"
+          bind-value="{{title}}">
+      </input>
+      <iron-autogrow-textarea
+          bind-value="{{body}}">
+      </iron-autogrow-textarea>
+    </template>
+    <template is="dom-if" if="[[!editable]]">
+      <h1 class$="[[emptyClass(title)]]">[[title]]</h1>
+      <p class$="[[emptyClass(body)]]">[[body]]</p>
+    </template>
+
   </template>
   <script>
     Polymer({
@@ -98,20 +139,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
-      listeners: {
-        input: 'onInput'
-      },
-
-      observers: [
-        'updateTextContent(title, body)'
-      ],
-
-      emptyClass: function(content, editable) {
-        if (editable) {
-          return !content ? 'placeholder' : '';
-        } else {
-          return !content ? 'hidden' : '';
-        }
+      emptyClass: function(content) {
+        return !content ? 'hidden' : '';
       },
 
       propertiesAreEmpty: function() {
@@ -121,18 +150,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         }
         return true;
-      },
-
-      updateTextContent: function(title, body) {
-        this.$.title.textContent = title;
-        this.$.body.textContent = body;
-      },
-
-      onInput: function() {
-        this.async(function() {
-          this.title = this.$.title.innerText;
-          this.body = this.$.body.innerText;
-        });
       }
     })
   </script>
