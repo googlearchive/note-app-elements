@@ -68,7 +68,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         id="body"
         class$="[[emptyClass(body, editable)]]"
         contenteditable$="[[editable]]"></p>
-    <!-- <p class="empty" hidden$="[[!propertiesAreEmpty(title, body, editable)]]">Tap to edit this note...</p> -->
   </template>
   <script>
     Polymer({
@@ -107,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         'updateTextContent(title, body)'
       ],
 
-      emptyClass(content, editable) {
+      emptyClass: function(content, editable) {
         if (editable) {
           return !content ? 'placeholder' : '';
         } else {
@@ -115,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
-      propertiesAreEmpty() {
+      propertiesAreEmpty: function() {
         for (var i = 0; i < arguments.length; ++i) {
           if (arguments[i]) {
             return false;
@@ -124,13 +123,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return true;
       },
 
-      updateTextContent(title, body) {
-        console.log(arguments);
+      updateTextContent: function(title, body) {
         this.$.title.textContent = title;
         this.$.body.textContent = body;
       },
 
-      onInput() {
+      onInput: function() {
         this.async(function() {
           this.title = this.$.title.innerText;
           this.body = this.$.body.innerText;

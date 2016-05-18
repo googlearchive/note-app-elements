@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <link rel="import" href="../app-storage/app-network-status-behavior.html">
 <script>
-  (() => {
+  (function() {
     'use strict';
 
     Polymer.NoteAppBehaviorImpl = {
@@ -28,29 +28,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return true;
       },
 
-      toEditableId(noteId) {
+      toEditableId: function(noteId) {
         return noteId;
       },
 
-      edit(event) {
+      edit: function(event) {
         if (this.isEditable) {
-          let noteElement = Polymer.dom(event).localTarget;
+          var noteElement = Polymer.dom(event).localTarget;
           this.editableNoteId = this.toEditableId(noteElement.id);
 
-          this.$.document.transactionsComplete.then(() => {
+          this.$.document.transactionsComplete.then(function() {
             this.$.editor.open(noteElement);
-          });
+          }.bind(this));
         }
       },
 
-      create() {
+      create: function() {
         if (this.isEditable) {
           this.editableNoteId = null;
           this.$.editor.open();
         }
       },
 
-      commitChange(event) {
+      commitChange: function(event) {
         var changeCommits;
 
         switch (event.detail) {
@@ -66,25 +66,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         if (this.$.query && this.$.query.refresh) {
-          changeCommits.then(() => {
+          changeCommits.then(function() {
             this.$.query.refresh();
-          });
+          }.bind(this));
         }
       },
 
-      save() {
+      save: function() {
         if (this.$.document.isNew &&
             (this.editableNote.title ||
              this.editableNote.body)) {
-          return this.$.document.save(this.notesPath).then(() => {
+          return this.$.document.save(this.notesPath).then(function() {
             this.$.document.reset();
-          });
+          }.bind(this));
         }
 
         return Promise.resolve();
       },
 
-      delete() {
+      delete: function() {
         if (!this.$.document.isNew) {
           this.$.document.destroy();
         }
@@ -92,7 +92,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return Promise.resolve();
       },
 
-      signOut() {
+      signOut: function() {
         if (this.$.auth) {
           this.$.auth.signOut();
         }
