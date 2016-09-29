@@ -16,8 +16,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style>
       :host {
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
+        @apply --layout-horizontal;
+        @apply --layout-center;
         background-color: var(--paper-purple-500);
         color: var(--paper-purple-50);
         padding: 6px 8px;
@@ -49,8 +49,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
     <iron-icon icon="bookmark"></iron-icon>
     <h1>Notes</h1>
-    <iron-icon icon="cloud" hidden$="[[!online]]"></iron-icon>
-    <iron-icon icon="cloud-off" hidden$="[[online]]"></iron-icon>
+    <span hidden$="[[!online]]">
+      <iron-icon icon="cloud"></iron-icon>
+    </span>
+    <span hidden$="[[online]]">
+      <iron-icon icon="cloud-off"></iron-icon>
+    </span>
     <paper-icon-button
         icon="[[computeLockIcon(signedIn)]]"
         disabled="[[!signedIn]]"

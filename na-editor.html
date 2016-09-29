@@ -69,8 +69,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 10px auto;
         width: calc(100vw - 20px);
         max-width: 480px;
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
+        @apply --layout-horizontal;
+        @apply --layout-center;
         justify-content: space-between;
         transition: opacity 0.3s;
         opacity: 0;
@@ -135,10 +135,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           this.__editedNoteElement.style.opacity = 1;
           this.__editedNoteElement = null;
         }
-
+        
         this.fire('close', detail, { bubbles: false });
         this.transitionOut().then(function() {
-          Polymer.dom(this).classList.remove('open');
+          var classList = Polymer.dom(this).classList || this.classList;
+          classList.remove('open');
           this._setOpened(false);
         }.bind(this));
       },
@@ -166,7 +167,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }], 800);
 
         noteAnimation.addEventListener('finish', function() {
-          Polymer.dom(this).classList.add('open');
+          var classList = Polymer.dom(this).classList || this.classList;
+          classList.add('open');
         }.bind(this));
       },
 
