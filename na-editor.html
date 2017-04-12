@@ -135,7 +135,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           this.__editedNoteElement.style.opacity = 1;
           this.__editedNoteElement = null;
         }
-        
+
         this.fire('close', detail, { bubbles: false });
         this.transitionOut().then(function() {
           var classList = Polymer.dom(this).classList || this.classList;
