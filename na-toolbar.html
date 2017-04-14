@@ -49,12 +49,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
     <iron-icon icon="bookmark"></iron-icon>
     <h1>Notes</h1>
-    <span hidden$="[[!online]]">
-      <iron-icon icon="cloud"></iron-icon>
-    </span>
-    <span hidden$="[[online]]">
-      <iron-icon icon="cloud-off"></iron-icon>
-    </span>
+    <iron-icon icon="cloud" hidden$="[[!online]]"></iron-icon>
+    <iron-icon icon="cloud-off" hidden$="[[online]]"></iron-icon>
     <paper-icon-button
         icon="[[computeLockIcon(signedIn)]]"
         disabled="[[!signedIn]]"
