@@ -138,7 +138,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         this.fire('close', detail, { bubbles: false });
         this.transitionOut().then(function() {
-          var classList = Polymer.dom(this).classList || this.classList;
+          var classList = Polymer.dom(this).classList;
           classList.remove('open');
           this._setOpened(false);
         }.bind(this));
