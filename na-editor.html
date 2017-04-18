@@ -166,8 +166,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }], 800);
 
         noteAnimation.addEventListener('finish', function() {
-          var classList = Polymer.dom(this).classList;
-          classList.add('open');
+          Polymer.dom(this).classList.add('open');
         }.bind(this));
       },
 
