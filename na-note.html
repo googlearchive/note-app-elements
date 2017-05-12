@@ -21,8 +21,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: #fafafa;
         color: #212121;
         padding: 1em;
-        @apply(--paper-font-common-base);
-        @apply(--shadow-elevation-2dp);
+        @apply --paper-font-common-base;
+        @apply --shadow-elevation-2dp;
         border-radius: 2px;
 
         --iron-autogrow-textarea: {
@@ -97,9 +97,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
     <template is="dom-if" if="[[editable]]">
-      <input is="iron-input"
-          bind-value="{{title}}">
-      </input>
+      <iron-input bind-value="{{title}}">
+        <input is="iron-input"
+            bind-value="{{title}}">
+        </input>
+      </iron-input>
       <iron-autogrow-textarea
           bind-value="{{body}}">
       </iron-autogrow-textarea>
