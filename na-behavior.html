@@ -79,7 +79,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         if (this.$.document.isNew &&
             (this.editableNote.title ||
              this.editableNote.body)) {
-          return this.$.document.save(this.notesPath).then(function() {
+          return this.$.document.saveValue(this.notesPath).then(function() {
             this.$.document.reset();
           }.bind(this));
         }
