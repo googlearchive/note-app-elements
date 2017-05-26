@@ -36,7 +36,13 @@
         "paper-icon-button": "polymerelements/paper-icon-button#^1.0.0",
         "iron-input": "polymerelements/iron-input#^1.0.0",
         "iron-autogrow-textarea": "polymerelements/iron-autogrow-textarea#^1.0.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
       }
     }
+  },
+  "resolutions": {
+    "webcomponentsjs": "^1.0.0"
   }
 }
