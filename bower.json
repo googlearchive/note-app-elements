@@ -19,7 +19,8 @@
     "paper-fab": "polymerelements/paper-fab#1 - 2",
     "paper-icon-button": "polymerelements/paper-icon-button#1 - 2",
     "iron-input": "polymerelements/iron-input#1 - 2",
-    "iron-autogrow-textarea": "polymerelements/iron-autogrow-textarea#1 - 2"
+    "iron-autogrow-textarea": "polymerelements/iron-autogrow-textarea#1 - 2",
+    "web-animations-js": "web-animations/web-animations-js#^2.2.1"
   },
   "variants": {
     "1.x": {
@@ -35,7 +36,8 @@
         "paper-fab": "polymerelements/paper-fab#^1.0.0",
         "paper-icon-button": "polymerelements/paper-icon-button#^1.0.0",
         "iron-input": "polymerelements/iron-input#^1.0.0",
-        "iron-autogrow-textarea": "polymerelements/iron-autogrow-textarea#^1.0.0"
+        "iron-autogrow-textarea": "polymerelements/iron-autogrow-textarea#^1.0.0",
+        "web-animations-js": "web-animations/web-animations-js#^2.2.1"
       },
       "resolutions": {
         "webcomponentsjs": "^0.7"
