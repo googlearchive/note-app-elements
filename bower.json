@@ -8,6 +8,7 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "private": true,
   "dependencies": {
+    "polymer": "Polymer/polymer#1.9 - 2",
     "app-storage": "polymerelements/app-storage#1 - 2",
     "paper-styles": "polymerelements/paper-styles#1 - 2",
     "iron-icons": "polymerelements/iron-icons#1 - 2",
@@ -21,9 +22,13 @@
     "iron-autogrow-textarea": "polymerelements/iron-autogrow-textarea#1 - 2",
     "web-animations-js": "web-animations/web-animations-js#^2.2.1"
   },
+  "resolutions": {
+    "webcomponentsjs": "^1.0.0"
+  },
   "variants": {
     "1.x": {
       "dependencies": {
+        "polymer": "Polymer/polymer#^1.9",
         "app-storage": "polymerelements/app-storage#^1.0.0",
         "paper-styles": "polymerelements/paper-styles#^1.0.0",
         "iron-icons": "polymerelements/iron-icons#^1.0.0",
@@ -41,8 +46,5 @@
         "webcomponentsjs": "^0.7"
       }
     }
-  },
-  "resolutions": {
-    "webcomponentsjs": "^1.0.0"
   }
 }
