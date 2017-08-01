@@ -101,10 +101,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <template is="dom-if" if="[[editable]]">
       <iron-input bind-value="{{title}}">
         <input is="iron-input"
+            placeholder="Title"
             bind-value="{{title}}">
         </input>
       </iron-input>
       <iron-autogrow-textarea
+          placeholder="Note"
           bind-value="{{body}}">
       </iron-autogrow-textarea>
     </template>
